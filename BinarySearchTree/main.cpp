@@ -34,9 +34,14 @@ int main() {
     tree.BSInsert(7);
 
     tree.levelOrder();
-
-
     tree.balance();
+    tree.levelOrder();
+
+    tree.BSInsert(5);
+    tree.BSInsert(7);
+    tree.BSInsert(5);
+    
+
     tree.levelOrder();
 
     

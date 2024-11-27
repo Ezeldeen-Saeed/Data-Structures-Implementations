@@ -7,11 +7,13 @@ public:
     Tdata data;
     TreeNode<Tdata>* left;
     TreeNode<Tdata>* right;
+    int counter;
 
     TreeNode(Tdata _data) {
         this->data = _data;
         this->left = nullptr;
         this->right = nullptr;
+        this->counter = 1;
     }
 };
 
@@ -33,6 +35,15 @@ public:
     ~BinaryTree() { clear(root); }
 
     void BSInsert(Tdata _data) {
+        // If you want to no allowing duplication.
+        //if (this->find(_data)) return;
+
+        if (this->find(_data)) {
+            this->find(_data)->counter++;
+            cout << endl << "Adding " << _data << " for " << find(_data)->counter << " times." << endl;
+            return;
+        }
+
         TreeNode<Tdata>* newNode = new TreeNode<Tdata>(_data);
         if (root == nullptr) {
             root = newNode;
@@ -188,6 +199,7 @@ public:
     }
 
     void insert(Tdata _data) {
+        if (this->find(_data)) return;
         TreeNode<Tdata>* newNode = new TreeNode<Tdata>(_data);
         if (root == nullptr) {
             root = newNode;
